@@ -1,14 +1,18 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
+import Chatbot from 'react-chatbot-kit'
+import 'react-chatbot-kit/build/main.css'
 
-import NxWelcome from './nx-welcome';
+import MessageParser from '../util/Messageparser';
+import ActionProvider from '../util/ActionProvider';
+import config from "src/util/config";
 
-export function App() {
+function App() {
   return (
-    <div>
-      <NxWelcome title="chatbot-sdk" />
+    <div className="App">
+      <header className="App-header">
+        <Chatbot messageParser={MessageParser} actionProvider={ActionProvider} config={config} />
+      </header>
     </div>
   );
 }
-
+ 
 export default App;
