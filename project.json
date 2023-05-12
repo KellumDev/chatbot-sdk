@@ -46,15 +46,12 @@
     },
     "serve": {
       "executor": "@nx/webpack:dev-server",
-      "defaultConfiguration": "development",
+     
       "options": {
         "buildTarget": "chatbot-sdk:build",
         "hmr": true
       },
       "configurations": {
-        "development": {
-          "buildTarget": "chatbot-sdk:build:development"
-        },
         "production": {
           "buildTarget": "chatbot-sdk:build:production",
           "hmr": false
@@ -80,12 +77,6 @@
       "options": {
         "jestConfig": "jest.config.ts",
         "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
       }
     }
   },
