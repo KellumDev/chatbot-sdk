@@ -1,4 +1,4 @@
-name: gulu-fronend-sdk
+name: chatbot-sdk
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
   REGION: us-east1
   # project-name but it can be anything you want
-  REPO_NAME: gulu-fronend-sdk
+  REPO_NAME: chatbot-sdk
 
 jobs:
   build-and-deploy:
