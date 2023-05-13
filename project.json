@@ -51,7 +51,11 @@
         "buildTarget": "chatbot-sdk:build",
         "hmr": true
       },
-      "configurations": {
+      "configurations": { 
+         "development": {
+          "buildTarget": "chatbot-sdk:build:development",
+          "hrm": true
+        },
         "production": {
           "buildTarget": "chatbot-sdk:build:production",
           "hmr": false
