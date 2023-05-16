@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@swc/helpers": "~0.5.0",
+    "axios": "^1.4.0",
     "react": "18.2.0",
     "react-chat-widget": "^3.1.4",
     "react-chatbot-kit": "^2.1.2",

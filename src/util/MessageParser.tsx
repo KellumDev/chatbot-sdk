@@ -6,8 +6,8 @@ const MessageParser = ({ children, actions }) => {
     const parse = (message) => {
         
         console.log("USER MESSAGE: ",message);
-        if (message === "hello") {
-          actions.handleHello();
+        if (message.includes("hello")) {
+          actions.handleHello(message);
         }
       };
 
