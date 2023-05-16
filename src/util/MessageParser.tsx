@@ -1,9 +1,13 @@
 /* eslint-disable no-debugger */
 import React from 'react';
 
+type ParserProps = {
+  actions: any,
+  children: string | JSX.Element | JSX.Element[] //| () => JSX.Element
+}; 
 
-const MessageParser = ({ children, actions }) => {
-    const parse = (message) => {
+const MessageParser = ({ children, actions }: ParserProps) => {
+    const parse = (message: string) => {
         
         console.log("USER MESSAGE: ",message);
         if (message.includes("hello")) {
@@ -13,7 +17,7 @@ const MessageParser = ({ children, actions }) => {
 
   return (
     <div>
-      {React.Children.map(children, (child) => {
+      {React.Children.map(children, (child: any) => {
         return React.cloneElement(child, {
           parse: parse,
           actions,
