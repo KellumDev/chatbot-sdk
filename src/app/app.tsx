@@ -6,7 +6,7 @@ import config from "../util/config";
 import MessageParser from '../util/MessageParser';
 
 function App() {
-  return (
+  return ( 
     <div className="App">
       <header className="App-header">
         <Chatbot messageParser={MessageParser} actionProvider={ActionProvider} config={config} />

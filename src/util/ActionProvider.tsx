@@ -23,7 +23,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: ActionProp
       const botMessage = createChatBotMessage(
         result.text,
         {
-          widget: 'currentWeatherWidget',
+          widget: 'currentWeatherWidget'
         }
       );
 
@@ -41,33 +41,6 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: ActionProp
     }
   };
 
-  const weatherForecast = async () => {
-
-    const result = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=columbus&cnt=7&appid=f4a41e7dbc92547d3d2f3470e1afab19`).then((response) => {
-      return response.data
-    });
-
-    console.log('RESULT OPENWEATHER: ', result);
-
-    /*   setState((prev) => ({
-        ...prev,
-        messages: [...prev.messages, botMessage],
-      })); */
-  }
-
-  const handleDog = () => {
-    const botMessage = createChatBotMessage(
-      "Here's a nice dog picture for you!",
-      {
-        widget: 'dogPicture',
-      }
-    );
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
 
   return (
     <div>
@@ -75,8 +48,6 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: ActionProp
         return React.cloneElement(child, {
           actions: {
             handleHello,
-            weatherForecast,
-            handleDog,
           },
         });
       })}

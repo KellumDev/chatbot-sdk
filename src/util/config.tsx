@@ -1,12 +1,7 @@
-
 import { createChatBotMessage } from 'react-chatbot-kit';
-
-//import  CustomWidget  from '../widgets/CustomWidget';  
 import CurrentWeatherWidget from 'src/widgets/CurrentWeather';
-import DogPicture from '../widgets/DogPicture';
-
- 
 import IWidget from 'react-chatbot-kit/build/src/interfaces/IWidget';
+
 const options = {
   /* loading: false,
   message: "this is my first" */
@@ -29,17 +24,11 @@ const config = {
     },
   }, 
   state: {
-    gist: '',
+    gist: 'HELLO WORLD',
     infoBox: '',
   },
    
   widgets: [
-    {
-      widgetName: 'dogPicture',
-      widgetFunc: (props: IWidget) => <div><DogPicture {...props} /></div>,
-      props: {},
-      mapStateToProps: ['gist'],
-    }, 
     {
       widgetName: 'currentWeatherWidget',
       widgetFunc: (props: IWidget) => <div><CurrentWeatherWidget {...props} /></div>,
