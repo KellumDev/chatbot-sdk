@@ -5,14 +5,26 @@ import ActionProvider from '../util/ActionProvider';
 import config from "../util/config";
 import MessageParser from '../util/MessageParser';
 
-function App() {
-  return ( 
+import WeatherContext from '../contextApi/WeatherContext';
+import { useState } from 'react';
+
+function App() { 
+  
+  const [currentWeatherState, setcurrentWeatherState] = useState({});
+
+  const updateCurrentWeatherState = (newValue) => {
+    setcurrentWeatherState(newValue);
+  }; 
+
+  return (
     <div className="App">
       <header className="App-header">
-        <Chatbot messageParser={MessageParser} actionProvider={ActionProvider} config={config} />
+        <WeatherContext.Provider value={{currentWeatherState, updateCurrentWeatherState }}>
+          <Chatbot messageParser={MessageParser} actionProvider={ActionProvider} config={config} />
+        </WeatherContext.Provider>
       </header>
     </div>
   );
 }
- 
+
 export default App;

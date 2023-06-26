@@ -1,16 +1,14 @@
 import React, { useEffect, useContext } from 'react';
+import WeatherContext from 'src/contextApi/WeatherContext';
 
-  
-// Weather icon SVG components
-const SunIcon = () => <svg>...</svg>;
-const CloudIcon = () => <svg>...</svg>;
+const CurrentWeatherWidget = (props) => { 
 
  
-
-const CurrentWeatherWidget = (props) => {
+    const {currentWeatherState} = useContext(WeatherContext);
+ 
     useEffect(() => {
         // This effect will run after every render
-         
+        console.log("WeatherContext: ",currentWeatherState)
       });
 
   return (
@@ -19,6 +17,7 @@ const CurrentWeatherWidget = (props) => {
       <div className="weather-description">
         <h3>Weather Description</h3>
         <p>Rain, Snow, Windy, Humidity, UV Index</p>
+         
       </div>
     </div>
   );

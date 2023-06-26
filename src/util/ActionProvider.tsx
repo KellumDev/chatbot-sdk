@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
+import WeatherContext from 'src/contextApi/WeatherContext'; 
 
 const baseURL = "http://localhost:5000/api/intent/send-intent?querytext=hello";
 type ActionProps = {
@@ -10,6 +11,8 @@ type ActionProps = {
 
 const ActionProvider = ({ createChatBotMessage, setState, children }: ActionProps) => {
 
+  const {updateCurrentWeatherState} = useContext(WeatherContext); 
+
   const handleHello = async (input: string) => {
     const result = await axios.get(`http://localhost:3333/api/intent/send-intent?querytext=${input}`).then((response) => {
       return response.data.fulfillment;
@@ -19,6 +22,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: ActionProp
 
     if (result && result.text && result.weatherQuery) {
       
+      updateCurrentWeatherState(result.weatherQuery); 
 
       const botMessage = createChatBotMessage(
         result.text,
