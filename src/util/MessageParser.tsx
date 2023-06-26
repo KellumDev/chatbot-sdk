@@ -33,7 +33,7 @@ const MessageParser = ({ children, actions }: ParserProps) => {
           parse: parse,
           actions,
         });
-      })}
+      })} 
     </div>
   );
 };
