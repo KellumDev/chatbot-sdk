@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
-import WeatherContext from 'src/contextApi/WeatherContext'; 
+import WeatherContext from 'src/contextApi/WeatherContext';
 
 const baseURL = "http://localhost:5000/api/intent/send-intent?querytext=hello";
 type ActionProps = {
@@ -11,18 +11,18 @@ type ActionProps = {
 
 const ActionProvider = ({ createChatBotMessage, setState, children }: ActionProps) => {
 
-  const {updateCurrentWeatherState} = useContext(WeatherContext); 
+  const { updateCurrentWeatherState, updateForecastWeatherState } = useContext(WeatherContext);
 
   const handleHello = async (input: string) => {
     const result = await axios.get(`http://localhost:3333/api/intent/send-intent?querytext=${input}`).then((response) => {
       return response.data.fulfillment;
     });
 
-    console.log("RESULTS: ",result)
+    console.log("RESULTS: ", result)
 
-    if (result && result.text && result.weatherQuery) {
-      
-      updateCurrentWeatherState(result.weatherQuery); 
+    if (result && result.text && result.weatherQuery && result.intent === 'GetWeather') {
+
+      updateCurrentWeatherState(result.weatherQuery);
 
       const botMessage = createChatBotMessage(
         result.text,
@@ -30,6 +30,22 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: ActionProp
           widget: 'currentWeatherWidget'
         }
       );
+
+      setState((prev) => ({
+        ...prev,
+        messages: [...prev.messages, botMessage],
+      }));
+
+    } else if (result.weatherQuery && result.intent === 'GetWeatherForecast') {
+
+      updateForecastWeatherState(result.weatherQuery);
+      console.log("FORECAST RESULTS: ", result.weatherQuery)
+      const botMessage = createChatBotMessage(
+        result.text,
+        {
+          widget: 'currentWeatherWidget'
+        }
+      )
 
       setState((prev) => ({
         ...prev,

@@ -15,9 +15,9 @@ const MessageParser = ({ children, actions }: ParserProps) => {
 
 
     console.log("USER MESSAGE: ", message);
-    if (message.includes("forecast")) {
+    /* if (message.includes("forecast")) {
       actions.weatherForecast()
-    }
+    } */
 
     if (message.includes('dog')) {
       actions.handleDog();
